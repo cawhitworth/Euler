@@ -1,12 +1,11 @@
-naiveFib 0 = 0
-naiveFib 1 = 1
-naiveFib n = naiveFib (n-1) + naiveFib (n-2)
+-- naiveFib 0 = 0
+-- naiveFib 1 = 1
+-- naiveFib n = naiveFib (n-1) + naiveFib (n-2)
 
-fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
-evensUnderLimit limit = [ i | i <- takeWhile (<= limit) fibs, even i]
 
 problem2 limit =
-    sum $ evensUnderLimit limit
+    let fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+    in sum [ i | i <- takeWhile (<= limit) fibs, even i]
 
 main = do
     print $ problem2 4000000
